@@ -1,12 +1,13 @@
 import React from "react";
+import { NavLink } from "react-router-dom";
 
 const Header = () => {
   return (
     <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
       <div className="container-fluid">
-        <a className="navbar-brand" href="#">
+        <NavLink className="navbar-brand" to="/" end>
           PERGRESP
-        </a>
+        </NavLink>
         <button
           className="navbar-toggler"
           type="button"
@@ -21,14 +22,9 @@ const Header = () => {
         <div className="collapse navbar-collapse" id="navbarSupportedContent">
           <ul className="navbar-nav me-auto mb-2 mb-lg-0">
             <li className="nav-item">
-              <a className="nav-link active" aria-current="page" href="#">
+              <NavLink className="nav-link" to="/" end>
                 Home
-              </a>
-            </li>
-            <li className="nav-item">
-              <a className="nav-link" href="#">
-                Link
-              </a>
+              </NavLink>
             </li>
             <li className="nav-item dropdown">
               <a
@@ -38,7 +34,7 @@ const Header = () => {
                 data-bs-toggle="dropdown"
                 aria-expanded="false"
               >
-                Dropdown
+                Categoria
               </a>
               <ul className="dropdown-menu">
                 <li>
@@ -52,17 +48,11 @@ const Header = () => {
                   </a>
                 </li>
                 <li>
-                  <hr className="dropdown-divider" />
-                </li>
-                <li>
                   <a className="dropdown-item" href="#">
                     Something else here
                   </a>
                 </li>
               </ul>
-            </li>
-            <li className="nav-item">
-              <a className="nav-link disabled">Disabled</a>
             </li>
           </ul>
           <form className="d-flex" role="search">
@@ -75,7 +65,7 @@ const Header = () => {
               required
             />
             <button className="btn btn-outline-light" type="submit">
-              <i class="bi bi-search"></i>
+              <i className="bi bi-search"></i>
             </button>
           </form>
         </div>

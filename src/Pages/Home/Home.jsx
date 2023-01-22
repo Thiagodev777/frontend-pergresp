@@ -1,25 +1,38 @@
 import React from "react";
 import Question from "../../Components/Question";
-import Welcome from "../../Components/Welcome";
 
 const Home = () => {
-  const [bdfake, Bdfake] = React.useState([
-    { id: 1, user: "antonio@gmail.com", question: "Mysql e bom ?" },
-    { id: 2, user: "thiago@gmail.com", question: "git hub e bom?" },
-    { id: 3, user: "anderson@gmail.com", question: "progamador ok" },
-    { id: 4, user: "joao@gmail.com", question: "styled-components" },
-  ]);
+  const [questions, setQuestions] = React.useState(null);
+  const [loading, setLoading] = React.useState(null);
+
+  React.useEffect(() => {
+    (async () => {
+      setLoading(true);
+      const res = await fetch("http://localhost:3333/questions");
+      const json = await res.json();
+      setQuestions(json);
+      setLoading(false);
+    })();
+  }, []);
 
   return (
     <div className="container">
-      <Welcome nome="Rafael" />
-      {bdfake.map((question) => (
-        <Question
-          key={question.id}
-          user={question.user}
-          question={question.question}
-        />
-      ))}
+      <div className="d-flex justify-content-between align-items-center mt-5">
+        <h1>Olá, Rafael!</h1>
+        <a className="btn btn-success px-3">Perguntar</a>
+      </div>
+      <hr />
+      {loading && <h2>Carregando...</h2>}
+      {!loading &&
+        questions?.map(({ idquestion, title, description, id_user }) => (
+          <Question
+            key={idquestion}
+            idquestion={idquestion}
+            id_user={id_user}
+            title={title}
+            description={description}
+          />
+        ))}
     </div>
   );
 };

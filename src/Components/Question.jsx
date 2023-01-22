@@ -1,12 +1,27 @@
 import React from "react";
+import { Link, useNavigate } from "react-router-dom";
 
-const Question = ({ user, question }) => {
+const Question = ({ idquestion, title, description, id_user }) => {
+  const [user, setUser] = React.useState("");
+  const navigate = useNavigate();
+  const reply = () => {
+    navigate(`/pergunta/${idquestion}`);
+  };
+  React.useEffect(() => {
+    (async () => {
+      const res = await fetch(`http://localhost:3333/user/${id_user}`);
+      const data = await res.json();
+      setUser(data);
+    })();
+  }, []);
   return (
-    <div class="card my-5 shadow">
-      <div class="card-header">Publicado por: {user}</div>
-      <div class="card-body">
-        <h3>{question}</h3>
-        <a href="#" class="btn btn-success block">
+    <div className="card my-5 shadow">
+      <div className="card-header">
+        Publicado por: {user.name} | {user.email}
+      </div>
+      <div className="card-body">
+        <h3>{title}</h3>
+        <a className="btn btn-success block" onClick={reply}>
           Responder
         </a>
       </div>
