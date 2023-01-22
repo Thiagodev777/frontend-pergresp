@@ -1,5 +1,6 @@
 import React from "react";
 import Question from "../../Components/Question";
+import { Link } from "react-router-dom";
 
 const Home = () => {
   const [questions, setQuestions] = React.useState(null);
@@ -19,7 +20,9 @@ const Home = () => {
     <div className="container">
       <div className="d-flex justify-content-between align-items-center mt-5">
         <h1>Olá, Rafael!</h1>
-        <a className="btn btn-success px-3">Perguntar</a>
+        <Link className="btn btn-success px-3" to="new">
+          Perguntar
+        </Link>
       </div>
       <hr />
       {loading && <h2>Carregando...</h2>}
