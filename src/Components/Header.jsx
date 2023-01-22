@@ -5,7 +5,7 @@ const Header = () => {
     <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
       <div className="container-fluid">
         <a className="navbar-brand" href="#">
-          Navbar
+          PERGRESP
         </a>
         <button
           className="navbar-toggler"
@@ -72,9 +72,10 @@ const Header = () => {
               name="q"
               placeholder="Pesquise por uma pergunta..."
               aria-label="Search"
+              required
             />
             <button className="btn btn-outline-light" type="submit">
-              Search
+              <i class="bi bi-search"></i>
             </button>
           </form>
         </div>
