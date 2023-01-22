@@ -19,7 +19,7 @@ const Home = () => {
   return (
     <div className="container">
       <div className="d-flex justify-content-between align-items-center mt-5">
-        <h1>Olá, Rafael!</h1>
+        <h1>Olá, Admin!</h1>
         <Link className="btn btn-success px-3" to="new">
           Perguntar
         </Link>
